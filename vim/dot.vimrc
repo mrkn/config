@@ -126,5 +126,10 @@ call s:CMapABC_Add('^bdelete', 'BDELETE')
 
 filetype plugin indent on
 
+" blogger.vim
+if filereadable(expand('~/.blogger.vimrc'))
+  source ~/.blogger.vimrc
+endif
+
 set secure
 
