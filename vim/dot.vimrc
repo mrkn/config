@@ -49,6 +49,8 @@ set nowrapscan
 
 set viminfo=<50,'10,h,r/a,n~/.viminfo
 
+helptags ~/.vim/doc
+
 "statusline
 set laststatus=2
 set statusline=[%{strftime('%m-%d\ %H:%M')}]\ %F%m%r%h%w\ [FORMAT=%{&ff}]\ [TYPE=%Y]\ [ASCII=\%03.3b]\ [POS=%04l,%04v,%04c][%p%%]\ [LEN=%L]
@@ -130,6 +132,9 @@ filetype plugin indent on
 if filereadable(expand('~/.blogger.vimrc'))
   source ~/.blogger.vimrc
 endif
+
+" hatena.vim
+let g:hatena_user='mrkn'
 
 set secure
 
