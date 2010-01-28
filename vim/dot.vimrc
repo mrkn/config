@@ -128,13 +128,17 @@ call s:CMapABC_Add('^bdelete', 'BDELETE')
 
 filetype plugin indent on
 
+" changelog
+let g:changelog_timeformat='%c'
+
 " blogger.vim
 if filereadable(expand('~/.blogger.vimrc'))
   source ~/.blogger.vimrc
 endif
 
-" hatena.vim
-let g:hatena_user='mrkn'
-
+" privacy settings
+if filereadable(expand('~/.privacy.vimrc'))
+  source ~/.privacy.vimrc
+endif
 set secure
 

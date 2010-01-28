@@ -259,6 +259,7 @@ function! s:HatenaEdit(...) " 編集する
 
     let nopaste = !&paste   
     set paste
+    let &readonly=0
     execute 'normal i' . content['body']
     if nopaste
         set nopaste
