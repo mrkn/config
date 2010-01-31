@@ -46,6 +46,7 @@ set showmatch
 set tabstop=2
 set whichwrap=b,s,h,l,<,>,[,]
 set nowrapscan
+set cursorline
 
 set viminfo=<50,'10,h,r/a,n~/.viminfo
 
@@ -125,6 +126,7 @@ command! BD
 
 call s:CMapABC_Add('^bd', 'BD')
 call s:CMapABC_Add('^bdelete', 'BDELETE')
+
 
 filetype plugin indent on
 
