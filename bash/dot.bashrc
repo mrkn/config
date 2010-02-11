@@ -82,11 +82,7 @@ fi
 #alias ll='ls -l'
 #alias la='ls -A'
 #alias l='ls -CF'
-
-alias tube_start='ssh -f start.tube.complex.eng.hokudai.ac.jp sh .ssh_monitor'
-alias tube_finish='ssh tube.complex.eng.hokudai.ac.jp sh .ssh_finish'
-
-alias stone_start='sudo stone localhost:22 443 &'
+alias tree='tree -ACDNp'
 
 case `uname -s` in
 Darwin*)
