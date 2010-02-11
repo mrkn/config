@@ -1,0 +1,40 @@
+# -*- ruby -*-
+
+# require 'autotest/autoupdate'
+# require 'autotest/once'
+# require 'autotest/rcov'
+# require 'autotest/restart'
+# require 'autotest/timestamp'
+
+# Autotest::AutoUpdate.sleep_time = o
+# Autotest::AutoUpdate.update_cmd = o
+# Autotest::RCov.command = o
+# Autotest::RCov.pattern = o
+
+# cf. http://d.hatena.ne.jp/seiunsky/20100131/1264913047
+require 'ruby-growl'
+module Autotest::Growl
+  @@growl = Growl.new("localhost", "autotest", ["autotest Notification"])
+
+  def self.growl(title, message, priority=0, sticky=false, icon=nil)
+    message += " at #{Time.now.strftime('%Y-%m-%d %H:%M:%S')}"
+    @growl.notify("autotest Notification", message, title, priority, sticky)
+  end
+
+  Autotest.add_hook :ran_command do |at|
+    results = at.results.last
+    examples = results[/(\d)\s+examples?/].to_i
+    failures = results[/(\d)\s+failures?/].to_i
+    errors   = results[/(\d)\s+errors?/].to_i
+    if examples > 0
+      if failures > 0 || errors > 0
+        growl("Tests Failed", "#{examples} examples, #{failures} failures, and #{errors} errors", 2)
+      else
+        growl("Tests Passed", "#{examples} examples, #{failures} failures, and #{errors} errors", 0)
+      end
+    else
+      growl("Tests Errored", "errors", 2)
+    end
+  end
+end
+# vim:set filetype=ruby fileencoding=utf-8 tabstop=8 shiftwidth=2 expandtab :
