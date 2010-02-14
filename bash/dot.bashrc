@@ -83,6 +83,9 @@ fi
 #alias la='ls -A'
 #alias l='ls -CF'
 alias tree='tree -ACDNp'
+if [ -e "/Applications/MacVim.app/Contents/MacOS/Vim" ]; then
+  alias vim="/Applications/MacVim.app/Contents/MacOS/Vim"
+fi
 
 case `uname -s` in
 Darwin*)
