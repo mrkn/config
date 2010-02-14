@@ -15,8 +15,6 @@ if has("gui_running")
   endif
 endif
 
-colorscheme desert
-
 source ~/.vimrc
 
 " vim:set fileencoding=UTF-8 expandtab :
