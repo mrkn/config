@@ -65,6 +65,14 @@ set imsearch=1
 syntax on
 filetype indent plugin on
 
+" omni-completion {{{
+" cf. http://vim-users.jp/2009/11/hack96/
+autocmd FileType *
+\   if &l:omnifunc == ''
+\ |   setlocal omnifunc=syntaxcomplete#Complete
+\ | endif
+" }}}
+
 " Command-line editing keybinds
 cnoremap <C-A> <Home>
 cnoremap <C-F> <Right>
