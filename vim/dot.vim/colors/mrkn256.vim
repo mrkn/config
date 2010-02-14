@@ -33,7 +33,7 @@ let g:colors_name="desert256"
 if has("gui_running") || &t_Co == 88 || &t_Co == 256
     " functions {{{
     " returns an approximate grey index for the given grey level
-    fun <SID>grey_number(x)
+    function! <SID>grey_number(x)
         if &t_Co == 88
             if a:x < 23
                 return 0
@@ -72,7 +72,7 @@ if has("gui_running") || &t_Co == 88 || &t_Co == 256
     endfun
 
     " returns the actual grey level represented by the grey index
-    fun <SID>grey_level(n)
+    function! <SID>grey_level(n)
         if &t_Co == 88
             if a:n == 0
                 return 0
@@ -105,7 +105,7 @@ if has("gui_running") || &t_Co == 88 || &t_Co == 256
     endfun
 
     " returns the palette index for the given grey index
-    fun <SID>grey_color(n)
+    function! <SID>grey_color(n)
         if &t_Co == 88
             if a:n == 0
                 return 16
@@ -126,7 +126,7 @@ if has("gui_running") || &t_Co == 88 || &t_Co == 256
     endfun
 
     " returns an approximate color index for the given color level
-    fun <SID>rgb_number(x)
+    function! <SID>rgb_number(x)
         if &t_Co == 88
             if a:x < 69
                 return 0
@@ -153,7 +153,7 @@ if has("gui_running") || &t_Co == 88 || &t_Co == 256
     endfun
 
     " returns the actual color level for the given color index
-    fun <SID>rgb_level(n)
+    function! <SID>rgb_level(n)
         if &t_Co == 88
             if a:n == 0
                 return 0
@@ -174,7 +174,7 @@ if has("gui_running") || &t_Co == 88 || &t_Co == 256
     endfun
 
     " returns the palette index for the given R/G/B color indices
-    fun <SID>rgb_color(x, y, z)
+    function! <SID>rgb_color(x, y, z)
         if &t_Co == 88
             return 16 + (a:x * 16) + (a:y * 4) + a:z
         else
@@ -183,7 +183,7 @@ if has("gui_running") || &t_Co == 88 || &t_Co == 256
     endfun
 
     " returns the palette index to approximate the given R/G/B color levels
-    fun <SID>color(r, g, b)
+    function! <SID>color(r, g, b)
         " get the closest grey
         let l:gx = <SID>grey_number(a:r)
         let l:gy = <SID>grey_number(a:g)
@@ -218,7 +218,7 @@ if has("gui_running") || &t_Co == 88 || &t_Co == 256
     endfun
 
     " returns the palette index to approximate the 'rrggbb' hex string
-    fun <SID>rgb(rgb)
+    function! <SID>rgb(rgb)
         let l:r = ("0x" . strpart(a:rgb, 0, 2)) + 0
         let l:g = ("0x" . strpart(a:rgb, 2, 2)) + 0
         let l:b = ("0x" . strpart(a:rgb, 4, 2)) + 0
@@ -227,7 +227,7 @@ if has("gui_running") || &t_Co == 88 || &t_Co == 256
     endfun
 
     " sets the highlighting for the given group
-    fun <SID>X(group, fg, bg, attr)
+    function! <SID>X(group, fg, bg, attr)
         if a:fg != ""
             exec "hi " . a:group . " guifg=#" . a:fg . " ctermfg=" . <SID>rgb(a:fg)
         endif
@@ -245,6 +245,8 @@ if has("gui_running") || &t_Co == 88 || &t_Co == 256
     " highlight groups
     call <SID>X("Cursor", "708090", "f0e68c", "")
     "CursorIM
+    call <SID>X("CursorColumn", "", "333333", "none")
+    call <SID>X("CursorLine", "", "333333", "none")
     "Directory
     "DiffAdd
     "DiffChange
@@ -255,7 +257,7 @@ if has("gui_running") || &t_Co == 88 || &t_Co == 256
     call <SID>X("Folded", "ffd700", "4d4d4d", "")
     call <SID>X("FoldColumn", "d2b48c", "4d4d4d", "")
     call <SID>X("IncSearch", "708090", "f0e68c", "")
-    call <SID>X("LineNr", "666633", "000000", "none")
+    call <SID>X("LineNr", "336666", "", "none")
     call <SID>X("ModeMsg", "daa520", "", "")
     call <SID>X("MoreMsg", "2e8b57", "", "")
     call <SID>X("NonText", "666699", "000000", "none")
@@ -272,6 +274,10 @@ if has("gui_running") || &t_Co == 88 || &t_Co == 256
     "Menu
     "Scrollbar
     "Tooltip
+    call <SID>X("Pmenu", "cccccc", "333333", "none")
+    call <SID>X("PmenuSel", "663333", "cccccc", "bold")
+    " call <SID>X("PmenuSbar", "", "", "")
+    " call <SID>X("PmenuThumb", "", "", "")
 
     " syntax highlighting groups
     call <SID>X("Comment", "87ceeb", "", "")
