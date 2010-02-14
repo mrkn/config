@@ -169,6 +169,7 @@ endif
 
 " git-vim {{{
 if isdirectory(expand("~/src/git-vim.git"))
+  " http://vim-users.jp/2009/09/hack67/
   let g:git_no_map_default = 1
   let g:git_command_edit = 'rightbelow vnew'
   nnoremap <Space>gd :<C-u>GitDiff --cached<Enter>
