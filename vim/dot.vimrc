@@ -37,7 +37,7 @@ set updatetime=60000
 set title
 set titlestring=vi:\ %f\ %h%r%m
 set number
-set numberwidth=5
+set numberwidth=6
 set showmatch
 set whichwrap=b,s,h,l,<,>,[,]
 set nowrapscan
