@@ -45,6 +45,7 @@ set cursorline
 set switchbuf=useopen
 set wildmode=list:longest
 set autoread
+set shiftwidth=2
 
 set list
 set listchars=eol:$,tab:>-,trail:-,extends:>,precedes:<
@@ -196,6 +197,55 @@ if isdirectory(expand("~/src/git-vim.git"))
     helptags ~/src/git-vim.git/doc
   endif
 endif
+" }}}
+
+" neocomplcache {{{
+" cf. http://vim-users.jp/2009/07/hack-49/
+if isdirectory(expand("~/src/neocomplcache.git"))
+  let g:NeoComplCache_EnableAtStartup = 1
+  let g:NeoComplCache_SmartCase = 1
+  let g:NeoComplCache_EnableCamelCaseCompletion = 1
+  let g:NeoComplCache_EnableUnderbarCompletion = 1
+  let g:NeoComplCache_MinSyntaxLength = 3
+  let g:NeoComplCache_ManualCompletionStartLength = 0
+  let g:NeoComplCache_CachingPercentInStatusline = 1
+  let g:NeoComplCache_DictionaryFileTypeLists = {
+        \ 'default' : '',
+        \ 'vimshell' : $HOME.'~/.vimshell_hist',
+        \ 'scheme' : $HOME.'~/.gosh_completions',
+        \ 'scala' : $DOTVIM.'/dict/scala.dict',
+        \ 'ruby' : $DOTVIM.'/dict/ruby.dict'
+        \ }
+  if !exists('g:NeoComplCache_KeywordPatterns')
+    let g:NeoComplCache_KeywordPatterns = {}
+  endif
+  let g:NeoComplCache_KeywordPatterns['default'] = '\v\h\w*'
+  let g:NeoComplCache_SnippetsDir = $HOME.'/snippets'
+
+  set runtimepath^=~/src/neocomplcache.git
+endif
+" }}}
+
+" for Ruby {{{
+" cf. http://github.com/ujihisa/config/blob/4cd4f32695917f95e9657feb07b73d0cafa6a60c/_vimrc#L310
+augroup Ruby
+  autocmd!
+  autocmd BufWinEnter,BufNewFile ~/src/ruby-trunk.svn/*.c setlocal tabstop=8 noexpandtab
+  autocmd BufWinEnter,BufNewFile ~/src/ruby-trunk.svn/*.y setlocal tabstop=8 noexpandtab
+  autocmd BufWinEnter,BufNewFile ~/src/ruby.git/*.c setlocal tabstop=8 noexpandtab
+  autocmd BufWinEnter,BufNewFile ~/src/ruby.git/*.y setlocal tabstop=8 noexpandtab
+augroup END
+" }}}
+
+" for RubySpec {{{
+" cf. http://github.com/ujihisa/config/blob/4cd4f32695917f95e9657feb07b73d0cafa6a60c/_vimrc#L317
+augroup RubySpec
+  autocmd!
+  autocmd BufWinEnter,BufNewFile ~/src/mspec.git/*.rb
+        \ let b:quickrun_config.ruby = {
+        \   'command' : '/usr/bin/env ruby ~/src/mspec.git/bin/mspec -t /opt/ruby/trunk/bin/ruby'
+        \ }
+augroup END
 " }}}
 
 " privacy settings
