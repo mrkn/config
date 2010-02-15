@@ -246,28 +246,29 @@ if has("gui_running") || &t_Co == 88 || &t_Co == 256
     call <SID>X("Cursor", "708090", "f0e68c", "")
     "CursorIM
     call <SID>X("CursorColumn", "", "333333", "none")
-    call <SID>X("CursorLine", "", "333333", "none")
+    call <SID>X("CursorLine", "", "333333", "underline")
     "Directory
     "DiffAdd
     "DiffChange
     "DiffDelete
     "DiffText
     "ErrorMsg
-    call <SID>X("VertSplit", "336666", "000000", "none")
+    call <SID>X("VertSplit", "666666", "000000", "none")
     call <SID>X("Folded", "ffd700", "4d4d4d", "")
     call <SID>X("FoldColumn", "d2b48c", "4d4d4d", "")
     call <SID>X("IncSearch", "708090", "f0e68c", "")
-    call <SID>X("LineNr", "336666", "", "none")
+    call <SID>X("LineNr", "666666", "", "none")
     call <SID>X("ModeMsg", "daa520", "", "")
     call <SID>X("MoreMsg", "2e8b57", "", "")
-    call <SID>X("NonText", "666699", "000000", "none")
+    call <SID>X("NonText", "666699", "", "none")
     call <SID>X("Question", "00ff7f", "", "")
     call <SID>X("Search", "f5deb3", "cd853f", "")
-    call <SID>X("SpecialKey", "9acd32", "", "")
-    call <SID>X("StatusLine", "ffffff", "336666", "none")
-    call <SID>X("StatusLineNC", "336666", "333333", "none")
+    call <SID>X("SpecialKey", "666699", "", "none")
+    call <SID>X("StatusLine", "ffffff", "666666", "none")
+    call <SID>X("StatusLineNC", "000000", "666666", "none")
     call <SID>X("Title", "cd5c5c", "", "")
     call <SID>X("Visual", "6b8e23", "f0e68c", "reverse")
+
     "VisualNOS
     call <SID>X("WarningMsg", "fa8072", "", "")
     "WildMenu
