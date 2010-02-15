@@ -14,9 +14,9 @@
 " readability) are calibrated to the colors used for Thomas E. Dickey's xterm
 " (version 200), which is available at http://dickey.his.com/xterm/xterm.html.
 "
-" I struggled with trying to parse the rgb.txt file to avoid the necessity of
-" converting color names to #rrggbb form, but decided it was just not worth
-" the effort.  Maybe someone seeing this may decide otherwise...
+" Henry had struggled with trying to parse the rgb.txt file to avoid the
+" necessity of converting color names to #rrggbb form, but decided it was just
+" not worth the effort.  I thank a lot for his results.
 
 set background=dark
 if version > 580
