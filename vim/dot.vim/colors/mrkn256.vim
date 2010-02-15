@@ -1,13 +1,12 @@
 " Vim color file
-" Maintainer: Henry So, Jr. <henryso@panix.com>
+" Maintainer: Kenta Murata <mrkn@mrkn.jp>
 
-" These are the colors of the "desert" theme by Hans Fugal with a few small
-" modifications (namely that I lowered the intensity of the normal white and
-" made the normal and nontext backgrounds black), modified to work with 88-
+" These are the color theme designed by mrkn based on "desert256" theme
+" created by Henry So, Jr.  This theme is designed to work with with 88-
 " and 256-color xterms.
 "
-" The original "desert" theme is available as part of the vim distribution or
-" at http://hans.fugal.net/vim/colors/.
+" The ancestor version "desert256" theme is available at
+" http://www.vim.org/scripts/script.php?script_id=1243
 "
 " The real feature of this color scheme, with a wink to the "inkpot" theme, is
 " the programmatic approximation of the gui colors to the palettes of 88- and
@@ -28,7 +27,7 @@ if version > 580
         syntax reset
     endif
 endif
-let g:colors_name="desert256"
+let g:colors_name="mrkn256"
 
 if has("gui_running") || &t_Co == 88 || &t_Co == 256
     " functions {{{
