@@ -30,6 +30,7 @@ set showcmd
 set showmode
 set ignorecase
 set smartcase
+set autoindent
 set nosmartindent
 set splitright
 set splitbelow
@@ -227,13 +228,29 @@ endif
 " }}}
 
 " for Ruby {{{
+if isdirectory(expand("~/src/vim-ruby.git"))
+  set runtimepath^=~/src/vim-ruby.git
+endif
 " cf. http://github.com/ujihisa/config/blob/4cd4f32695917f95e9657feb07b73d0cafa6a60c/_vimrc#L310
-augroup Ruby
+function! s:Ruby_MRI_setup()
+  setlocal tabstop=8 softtabstop=4 shiftwidth=4 noexpandtab
+  syntax keyword cType VALUE ID RUBY_DATA_FUNC BDIGIT ruby_glob_func
+  syntax keyword cType rb_global_variable
+  syntax keyword cType rb_classext_t rb_data_type_t
+  syntax keyword cType rb_gvar_getter_t rb_gvar_setter_t rb_gvar_marker_t
+  syntax keyword cType rb_encoding rb_transcoding rb_econv_t rb_econv_elem_t rb_econv_result_t
+  syntax keyword cType RBasic RObject RClass RFloat RString RArray RRegexp RHash RFile RRational RComplex RData RTypedData RStruct RBignum
+  syntax keyword cType st_table st_data
+  syntax match   cType display "\<\(RUBY_\)\?T_\(OBJECT\|CLASS\|MODULE\|FLOAT\|STRING\|REGEXP\|ARRAY\|HASH\|STRUCT\|BIGNUM\|FILE\|DATA\|MATCH\|COMPLEX\|RATIONAL\|NIL\|TRUE\|FALSE\|SYMBOL\|FIXNUM\|UNDEF\|NODE\|ICLASS\|ZOMBIE\)\>"
+  syntax keyword cStatement ANYARGS NORETURN PRINTF_ARGS
+  syntax keyword cStorageClass RUBY_EXTERN
+  syntax keyword cOperator IMMEDIATE_P SPECIAL_CONST_P BUILTIN_TYPE SYMBOL_P FIXNUM_P NIL_P RTEST
+  syntax keyword cConstant Qtrue Qfalse Qnil Qundef
+endfunction
+
+augroup Ruby_MRI
   autocmd!
-  autocmd BufWinEnter,BufNewFile ~/src/ruby-trunk.svn/*.c setlocal tabstop=8 noexpandtab
-  autocmd BufWinEnter,BufNewFile ~/src/ruby-trunk.svn/*.y setlocal tabstop=8 noexpandtab
-  autocmd BufWinEnter,BufNewFile ~/src/ruby.git/*.c setlocal tabstop=8 noexpandtab
-  autocmd BufWinEnter,BufNewFile ~/src/ruby.git/*.y setlocal tabstop=8 noexpandtab
+  autocmd BufWinEnter,BufNewFile ~/src/ruby{,-classbox}.git/*.[chy] call s:Ruby_MRI_setup()
 augroup END
 " }}}
 
@@ -248,6 +265,12 @@ augroup RubySpec
 augroup END
 " }}}
 
+" for Rails {{{
+if isdirectory(expand("~/src/vim-rails.git"))
+  set runtimepath^=~/src/vim-rails.git
+endif
+" }}}
+"
 " privacy settings
 if filereadable(expand('~/.privacy.vimrc'))
   source ~/.privacy.vimrc
