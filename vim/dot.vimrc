@@ -79,6 +79,8 @@ autocmd FileType *
 cnoremap <C-A> <Home>
 cnoremap <C-F> <Right>
 cnoremap <C-B> <Left>
+cnoremap <C-N> <Up>
+cnoremap <C-P> <Down>
 
 " New group for autocmd defined in this script
 augroup MyAutoCmd
