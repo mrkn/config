@@ -32,26 +32,12 @@ fi
 # set a fancy prompt (non-color, unless we know we "want" color)
 case "$TERM" in
 xterm*|rxvt*|putty*|screen*)
-  #PS1='${debian_chroot:+($debian_chroot)}\[\e[0;33m\][$(date +%H:%M:%S)#\#]\[\e[1;32m\]\u@\h\[\e[00m\]:\[\e[1;34m\]\w\[\e[0m\]\$ '
-  WORKING_DIRECTORY='\[\e[$[COLUMNS-$(echo -n " (\w)" | wc -c)]C\e[1;35m(\w)\e[0m\e[$[COLUMNS]D\]'
-  PS1=${WORKING_DIRECTORY}'${debian_chroot:+($debian_chroot)}\[\e[0;33m\][$(date +%H:%M:%S)#\#]\[\e[1;32m\]\u@\h\[\e[00m\]\$ '
+  PS1='\[\033[0m\]\[\033[1m\]\[\033[38;5;124m\]\h:\w$(if test "`git ls-files 2>/dev/null`"; then echo " ("`git branch 2>/dev/null | grep ^* | cut -b 3-`")"; fi)\[\033[0m\]\n[$(date +%H:%M:%S)#\#]\u\$ '
   ;;
 *)
-  PS1='${debian_chroot:+($debian_chroot)}[$(date +%H:%M:%S)(\#)]\u@\h:\w\$ '
+  PS1='\[\033[0m\]\h:\w$(if test "`git ls-files 2>/dev/null`"; then echo " ("`git branch 2>/dev/null | grep ^* | cut -b 3-`")"; fi)\n[$(date +%H:%M:%S)#\#]\u\$ '
   ;;
 esac
-
-# Comment in the above and uncomment this below for a color prompt
-#PS1='${debian_chroot:+($debian_chroot)}\[\033[01;32m\]\u#\h\[\033[00m\]:\[\033[01;34m\]\w\[\033[00m\]\$ '
-
-# # If this is an xterm set the title to user@host:dir
-# case "$TERM" in
-# xterm*|rxvt*|putty*)
-#   PROMPT_COMMAND='echo -ne "\033]0;${USER}@${HOSTNAME}: ${PWD/$HOME/~}\007"'
-#   ;;
-# *)
-#   ;;
-# esac
 
 # Alias definitions.
 # You may want to put all your additions into a separate file like
@@ -83,9 +69,9 @@ fi
 #alias la='ls -A'
 #alias l='ls -CF'
 alias tree='tree -ACDNp'
-if [ -e "/Applications/MacVim.app/Contents/MacOS/Vim" ]; then
-  alias vim="/Applications/MacVim.app/Contents/MacOS/Vim"
-fi
+#if [ -e "/Applications/MacVim.app/Contents/MacOS/Vim" ]; then
+#  alias vim="/Applications/MacVim.app/Contents/MacOS/Vim"
+#fi
 
 case `uname -s` in
 Darwin*)
