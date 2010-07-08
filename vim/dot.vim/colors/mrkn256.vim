@@ -255,13 +255,13 @@ if has("gui_running") || &t_Co == 88 || &t_Co == 256
     call <SID>X("VertSplit", "666666", "000000", "none")
     call <SID>X("Folded", "ffd700", "4d4d4d", "")
     call <SID>X("FoldColumn", "d2b48c", "4d4d4d", "")
-    call <SID>X("IncSearch", "708090", "f0e68c", "")
     call <SID>X("LineNr", "666666", "", "none")
     call <SID>X("ModeMsg", "daa520", "", "")
     call <SID>X("MoreMsg", "2e8b57", "", "")
     call <SID>X("NonText", "666699", "", "none")
     call <SID>X("Question", "00ff7f", "", "")
-    call <SID>X("Search", "f5deb3", "cd853f", "")
+    call <SID>X("IncSearch", "708090", "f0e68c", "")
+    call <SID>X("Search", "333333", "cccccc", "bold")
     call <SID>X("SpecialKey", "666699", "", "none")
     call <SID>X("StatusLine", "ffffff", "666666", "none")
     call <SID>X("StatusLineNC", "000000", "666666", "none")
@@ -287,10 +287,30 @@ if has("gui_running") || &t_Co == 88 || &t_Co == 256
     call <SID>X("PreProc", "ff6666", "", "")
     call <SID>X("Type", "ffcc66", "", "none")
     call <SID>X("Special", "ffdead", "", "")
+    call <SID>X("Number", "cc66ff", "", "")
+    call <SID>X("String", "cccc66", "", "")
+    call <SID>X("Operator", "ff00ff", "", "")
+    call <SID>X("Conditional", "ff6633", "", "")
+    call <SID>X("Repeat", "66ff66", "", "")
+    call <SID>X("Function", "9999ff", "", "underline")
+    call <SID>X("Delimiter", "99cccc", "", "")
     "Underlined
     call <SID>X("Ignore", "666666", "", "")
     "Error
     call <SID>X("Todo", "ff4500", "eeee00", "")
+
+    " for Ruby {{{
+    call <SID>X("rubyDefine", "ffff00", "", "")
+    call <SID>X("rubyClass", "3399ff", "", "")
+    call <SID>X("rubyModule", "ff9966", "", "")
+    call <SID>X("rubyControl", "ff99ff", "", "none")
+    call <SID>X("rubyGlobalVariable", "ff3300", "", "")
+    call <SID>X("rubyClassVariable", "ff3300", "", "")
+    call <SID>X("rubyPredefinedVariable", "ff9999", "", "")
+    call <SID>X("rubyPredefinedConstant", "ff9999", "", "")
+    call <SID>X("rubySymbol", "99ffcc", "", "")
+    call <SID>X("rubyKeyword", "ff6666", "", "")
+    " }}}
 
     " delete functions {{{
     delf <SID>X

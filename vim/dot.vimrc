@@ -1,5 +1,5 @@
 set nocompatible
-set runtimepath&
+"set runtimepath&
 
 set encoding=UTF-8
 set termencoding=UTF-8
@@ -53,7 +53,7 @@ set listchars=eol:$,tab:>-,trail:-,extends:>,precedes:<
 set viminfo=<50,'10,h,r/a,n~/.viminfo
 
 
-helptags ~/.vim/doc
+helptags /Users/mrkn/src/config.git/vim/dot.vim/doc
 
 "statusline
 set laststatus=2
@@ -150,37 +150,37 @@ filetype plugin indent on
 let g:changelog_timeformat='%c'
 
 " blogger.vim
-if filereadable(expand('~/.blogger.vimrc'))
-  source ~/.blogger.vimrc
+if filereadable(expand('/Users/mrkn/.blogger.vimrc'))
+  source /Users/mrkn/.blogger.vimrc
 endif
 
 " vimshell
-if isdirectory(expand("~/src/vimshell.git")) && isdirectory(expand("~/src/vimproc.git"))
-  set runtimepath^=~/src/vimshell.git,~/src/vimproc.git
-  if isdirectory(expand("~/src/vimshell.git/doc"))
-    helptags ~/src/vimshell.git/doc
+if isdirectory(expand("/Users/mrkn/src/vimshell.git")) && isdirectory(expand("/Users/mrkn/src/vimproc.git"))
+  set runtimepath^=/Users/mrkn/src/vimshell.git,~/src/vimproc.git
+  if isdirectory(expand("/Users/mrkn/src/vimshell.git/doc"))
+    helptags /Users/mrkn/src/vimshell.git/doc
   endif
-  if isdirectory(expand("~/src/vimproc.git/doc"))
-    helptags ~/src/vimproc.git/doc
+  if isdirectory(expand("/Users/mrkn/src/vimproc.git/doc"))
+    helptags /Users/mrkn/src/vimproc.git/doc
   endif
 endif
 
 " quickrun {{{
-if isdirectory(expand("~/src/vim-quickrun.git"))
+if isdirectory(expand("/Users/mrkn/src/vim-quickrun.git"))
   if !exists("g:quickrun_config")
     let g:quickrun_config = {}
   endif
   let g:quickrun_config["*"] = {'split' : 'rightbelow vertical'}
 
-  set runtimepath^=~/src/vim-quickrun.git
-  if isdirectory(expand("~/src/vim-quickrun.git/doc"))
-    helptags ~/src/vim-quickrun.git/doc
+  set runtimepath^=/Users/mrkn/src/vim-quickrun.git
+  if isdirectory(expand("/Users/mrkn/src/vim-quickrun.git/doc"))
+    helptags /Users/mrkn/src/vim-quickrun.git/doc
   endif
 endif
 " }}}
 
 " git-vim {{{
-if isdirectory(expand("~/src/git-vim.git"))
+if isdirectory(expand("/Users/mrkn/src/git-vim.git"))
   " http://vim-users.jp/2009/09/hack67/
   let g:git_no_map_default = 1
   let g:git_command_edit = 'rightbelow vnew'
@@ -195,43 +195,45 @@ if isdirectory(expand("~/src/git-vim.git"))
   nnoremap <Space>gC :<C-u>GitCommit --amend<Enter>
   nnoremap <Space>gp :<C-u>Git push
 
-  set runtimepath^=~/src/git-vim.git
-  if isdirectory(expand("~/src/git-vim.git/doc"))
-    helptags ~/src/git-vim.git/doc
+  set runtimepath^=/Users/mrkn/src/git-vim.git
+  if isdirectory(expand("/Users/mrkn/src/git-vim.git/doc"))
+    helptags /Users/mrkn/src/git-vim.git/doc
   endif
 endif
 " }}}
 
 " neocomplcache {{{
 " cf. http://vim-users.jp/2009/07/hack-49/
-if isdirectory(expand("~/src/neocomplcache.git"))
-  let g:NeoComplCache_EnableAtStartup = 1
-  let g:NeoComplCache_SmartCase = 1
-  let g:NeoComplCache_EnableCamelCaseCompletion = 1
-  let g:NeoComplCache_EnableUnderbarCompletion = 1
-  let g:NeoComplCache_MinSyntaxLength = 3
-  let g:NeoComplCache_ManualCompletionStartLength = 0
-  let g:NeoComplCache_CachingPercentInStatusline = 1
-  let g:NeoComplCache_DictionaryFileTypeLists = {
+if isdirectory(expand("/Users/mrkn/src/neocomplcache.git"))
+  let g:acp_enableAtStartup = 0
+  let g:neocomplcache_enable_at_startup = 1
+  let g:neocomplcache_smart_case = 1
+  let g:neocomplcache_enable_camel_case_completion = 1
+  let g:neocomplcache_enable_underbar_completion = 1
+  let g:neocomplcache_min_syntax_length = 3
+  let g:neocomplcache_manual_completion_start_length = 0
+  let g:neocomplcache_lock_buffer_name_pattern = '\*ku\*'
+  let g:neocomplcache_dictionary_file_type_lists = {
         \ 'default' : '',
         \ 'vimshell' : $HOME.'~/.vimshell_hist',
         \ 'scheme' : $HOME.'~/.gosh_completions',
         \ 'scala' : $DOTVIM.'/dict/scala.dict',
         \ 'ruby' : $DOTVIM.'/dict/ruby.dict'
         \ }
-  if !exists('g:NeoComplCache_KeywordPatterns')
-    let g:NeoComplCache_KeywordPatterns = {}
+  if !exists('g:neocomplcache_keyword_patterns')
+    let g:neocomplcache_keyword_patterns = {}
   endif
-  let g:NeoComplCache_KeywordPatterns['default'] = '\v\h\w*'
-  let g:NeoComplCache_SnippetsDir = $HOME.'/snippets'
+  let g:neocomplcache_keyword_patterns['default'] = '\h\w*'
+  let g:neocomplcache_snippets_dir = $HOME.'/snippets'
+  let g:neocomplcache_caching_percent_in_statusline = 1
 
-  set runtimepath^=~/src/neocomplcache.git
+  set runtimepath^=/Users/mrkn/src/neocomplcache.git
 endif
 " }}}
 
 " for Ruby {{{
-if isdirectory(expand("~/src/vim-ruby.git"))
-  set runtimepath^=~/src/vim-ruby.git
+if isdirectory(expand("/Users/mrkn/src/vim-ruby.git"))
+  set runtimepath^=/Users/mrkn/src/vim-ruby.git
 endif
 " cf. http://github.com/ujihisa/config/blob/4cd4f32695917f95e9657feb07b73d0cafa6a60c/_vimrc#L310
 function! s:Ruby_MRI_setup()
@@ -252,7 +254,7 @@ endfunction
 
 augroup Ruby_MRI
   autocmd!
-  autocmd BufWinEnter,BufNewFile ~/src/ruby{,-classbox}.git/*.[chy] call s:Ruby_MRI_setup()
+  autocmd BufWinEnter,BufNewFile /Users/mrkn/src/ruby{,-classbox}.git/*.[chy] call s:Ruby_MRI_setup()
 augroup END
 " }}}
 
@@ -260,16 +262,16 @@ augroup END
 " cf. http://github.com/ujihisa/config/blob/4cd4f32695917f95e9657feb07b73d0cafa6a60c/_vimrc#L317
 augroup RubySpec
   autocmd!
-  autocmd BufWinEnter,BufNewFile ~/src/mspec.git/*.rb
+  autocmd BufWinEnter,BufNewFile /Users/mrkn/src/mspec.git/*.rb
         \ let b:quickrun_config.ruby = {
-        \   'command' : '/usr/bin/env ruby ~/src/mspec.git/bin/mspec -t /opt/ruby/trunk/bin/ruby'
+        \   'command' : '/usr/bin/env ruby /Users/mrkn/src/mspec.git/bin/mspec -t /opt/ruby/trunk/bin/ruby'
         \ }
 augroup END
 " }}}
 
 " for Rails {{{
-if isdirectory(expand("~/src/vim-rails.git"))
-  set runtimepath^=~/src/vim-rails.git
+if isdirectory(expand("/Users/mrkn/src/vim-rails.git"))
+  set runtimepath^=/Users/mrkn/src/vim-rails.git
 endif
 " }}}
 "
