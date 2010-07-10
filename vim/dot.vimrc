@@ -236,7 +236,7 @@ if isdirectory(expand("/Users/mrkn/src/vim-ruby.git"))
   set runtimepath^=/Users/mrkn/src/vim-ruby.git
 endif
 " cf. http://github.com/ujihisa/config/blob/4cd4f32695917f95e9657feb07b73d0cafa6a60c/_vimrc#L310
-function! s:Ruby_MRI_setup()
+function! s:CRuby_setup()
   setlocal tabstop=8 softtabstop=4 shiftwidth=4 noexpandtab
   syntax keyword cType VALUE ID RUBY_DATA_FUNC BDIGIT ruby_glob_func
   syntax keyword cType rb_global_variable
@@ -252,9 +252,18 @@ function! s:Ruby_MRI_setup()
   syntax keyword cConstant Qtrue Qfalse Qnil Qundef
 endfunction
 
-augroup Ruby_MRI
+function! s:CRuby_ext_setup()
+  let dirname = expand("%:h")
+  let extconf = dirname . "/extconf.rb"
+  if filereadable(extconf)
+    call s:CRuby_setup()
+  endif
+endfunction
+
+augroup CRuby
   autocmd!
-  autocmd BufWinEnter,BufNewFile /Users/mrkn/src/ruby{,-classbox}.git/*.[chy] call s:Ruby_MRI_setup()
+  autocmd BufWinEnter,BufNewFile /Users/mrkn/src/ruby{,-classbox}.git/*.[chy] call s:CRuby_setup()
+  autocmd BufWinEnter,BufNewFile *.{c,cc,cpp,h,hh,hpp} call s:CRuby_ext_setup()
 augroup END
 " }}}
 
