@@ -32,7 +32,7 @@ fi
 # set a fancy prompt (non-color, unless we know we "want" color)
 case "$TERM" in
 xterm*|rxvt*|putty*|screen*)
-  PS1='\[\033[0m\]\[\033[1m\]\[\033[38;5;124m\]\h:\w$(if test "`git ls-files 2>/dev/null`"; then echo " ("`git branch 2>/dev/null | grep ^* | cut -b 3-`")"; fi)\[\033[0m\]\n[$(date +%H:%M:%S)#\#]\u\$ '
+  PS1='\[\033[0m\]\[\033[1m\]\[\033[38;5;205m\]\h:\w$(if test "`git ls-files 2>/dev/null`"; then echo " ("`git branch 2>/dev/null | grep ^* | cut -b 3-`")"; fi)\[\033[0m\]\n[$(date +%H:%M:%S)#\#]\u\$ '
   ;;
 *)
   PS1='\[\033[0m\]\h:\w$(if test "`git ls-files 2>/dev/null`"; then echo " ("`git branch 2>/dev/null | grep ^* | cut -b 3-`")"; fi)\n[$(date +%H:%M:%S)#\#]\u\$ '
