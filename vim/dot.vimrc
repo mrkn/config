@@ -44,7 +44,8 @@ set whichwrap=b,s,h,l,<,>,[,]
 set nowrapscan
 set cursorline
 set switchbuf=useopen
-set wildmode=list:longest
+set wildmenu
+set wildmode=longest,list,full
 set autoread
 set shiftwidth=2
 
