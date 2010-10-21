@@ -1,74 +1,77 @@
-# $Id: mrkn-screenrc 5298 2008-01-22 13:46:45Z mrkn $
-
 defutf8 on
 defencoding UTF-8
 
-escape ^Ll
+defscrollback 1024
+defobuflimit 1024
+defnonblock off
+defbce on
 
-# make the shell in every window a login shell
+# use login shell
 shell -$SHELL
 
-# window title
-shelltitle "$ |bash"
-
-# hardstatus
-hardstatus alwayslastline "[%02c] %`%-w%{=b bw}%n %t%{-}%+w"
-
-# don't display the copyright page
 startup_message off
-
-# detach on hangup
 autodetach on
 
-# scroll back lines
-defscrollback 8192
-
-# no annoying audible bell, please
+caption always
+hardstatus alwayslastline "[%02c] %`%-w%{=b bw}%n %t%{-}%+w"
+shelltitle "$ |bash"
 vbell on
-
-# emulate .logout message
 pow_detach_msg "Screen session of \$LOGNAME \$:cr:\$:nl:ended."
-
-# allow bold colors - necessary for some reason
 attrcolor b ".I"
-
-# erase background with current bg color
-defbce "on"
-
-# do not use 'screen-bce'
-#term putty-256color
 term xterm-256color
 
-#############
-#
-# keybindings
-#
+escape ^Ll
+bind ^t focus top
+bind ^j focus down
+bind ^k focus up
+bind ^b focus bottom
+bind K kill
+bind w windowlist -b
+bind P paste [.]
 
-# remove some stupid/dangerous key bindings
-bind k
-bind ^k
-bind .
 bind ^\
-bind \\
 bind ^h
+bind k
+bind .
+bind q
 bind s
-# make them better
-bind 'K' kill
-bind 'I' login on
-bind 'O' login off
-bind '}' history
-bind ^L redisplay
+bind \\
+
+# the following comment-outed bindings are defaults
+# which overwrote the above settings
+#bind ^b break
+#bind ^k kill
+#bind ^t time
+#bind k kill
+#bind q xon
+#bind s xoff
+#bind w windows
+#bind . dumptermcap
+#bind ^\ quit
+
 
 # Yet another hack:
 # Prepend/append register [/] to the paste if ^a^] is pressed.
 # This lets me have autoindent mode in vi.
 register [ "\033:se noai\015a"
-register ] "\033:se ai\051a"
-bind ^] paste [.]
+register ] "\033:se ai\015a"
 
-termcapinfo xterm is=\E[r\E[m\E[2J\E[H\E[?7h\E[?1;4;6l
-termcapinfo xterm*|rxvt*|kterm*|Eterm*|putty* hs:ts=\E]0;:fs=\007:ds=\E]0;\007
-termcapinfo xterm*|linux*|rxvt*|Eterm*|putty* OP
-termcapinfo xterm*|rxvt*|putty* ti@:te@
 
-termcapinfo xterm*|putty*|rxvt*|kterm*|Eterm* Co#256:AB=\E[48;5;%dm:AF=\E[38;5;%dm
+# Termcap #{{{
+#   hs: has_status_line
+#   ts: to_status_line
+#   fs: from_status_line
+#   ds: dis_status_line
+termcapinfo xterm*|putty*  hs:ts=\E]0;:fs=\007:ds=\E]0;\007
+#   OP: 
+termcapinfo xterm*|putty* OP
+#   is: init_2string
+termcapinfo xterm*|putty* is=\E[r\E[m\E[2J\E[H\E[?7h\E[?1;4;6l
+#   ti: enter_ca_mode
+#   te: exit_ca_mode
+termcapinfo xterm*|putty* ti@:te@
+#   Co: max_colors
+#   AB: set_a_backgrond
+#   AF: set_a_foreground
+termcapinfo xterm*|putty* 'Co#256:AB=\E[48;5;%dm:AF=\E[38;5;%dm'
+# #}}}
