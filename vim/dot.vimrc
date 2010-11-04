@@ -1,8 +1,9 @@
 set nocompatible
 "set runtimepath&
 
-set encoding=UTF-8
-set termencoding=UTF-8
+set encoding=utf-8
+set termencoding=utf-8
+set fileencodings=ucs-bom,utf-8,iso-2022-jp,sjis,cp932,euc-jp,cp20932
 if has('iconv')
   let s:enc_euc = 'euc-jp'
   let s:enc_jis = 'iso-2022-jp'
@@ -48,6 +49,8 @@ set wildmenu
 set wildmode=longest,list,full
 set autoread
 set shiftwidth=2
+set modeline
+set modelines=5
 
 set list
 set listchars=eol:$,tab:>-,trail:-,extends:>,precedes:<
@@ -134,12 +137,14 @@ autocmd MyAutoCmd TabEnter *
 " Alternate bdelete for keeping window layout
 command! BDELETE
 \   let s:current_buffer = bufnr("%")
-\ | enew
+\ | bprevious
 \ | execute "bdelete ".s:current_buffer
 \ | unlet s:current_buffer
 
 command! BD
 \   BDELETE
+
+nnoremap <C-w><C-D> :BDELETE<Enter>
 
 call s:CMapABC_Add('^bd', 'BD')
 call s:CMapABC_Add('^bdelete', 'BDELETE')
@@ -199,6 +204,20 @@ if isdirectory(expand("~mrkn/src/git-vim.git"))
   set runtimepath^=~mrkn/src/git-vim.git
   if isdirectory(expand("~mrkn/src/git-vim.git/doc"))
     helptags ~mrkn/src/git-vim.git/doc
+  endif
+endif
+" }}}
+
+" gist-vim {{{
+if isdirectory(expand("~mrkn/src/gist-vim.git"))
+  " http://mattn.kaoriya.net/software/vim/20081106153534.htm
+  if has("unix") && match(system("uname"),'Darwin') != -1
+    let g:gist_clip_command = 'pbcopy'
+  endif
+
+  set runtimepath^=~mrkn/src/gist-vim.git
+  if isdirectory(expand("~mrkn/src/gits-vim.git/doc"))
+    helptags ~mrkn/src/gits-vim.git/doc
   endif
 endif
 " }}}
@@ -312,6 +331,12 @@ augroup END
 " for Rails {{{
 if isdirectory(expand("~mrkn/src/vim-rails.git"))
   set runtimepath^=~mrkn/src/vim-rails.git
+endif
+" }}}
+
+" for Cucumber {{{
+if isdirectory(expand("~mrkn/src/vim-cucumber.git"))
+  set runtimepath^=~mrkn/src/vim-cucumber.git
 endif
 " }}}
 
