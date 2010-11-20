@@ -152,6 +152,15 @@ call s:CMapABC_Add('^bdelete', 'BDELETE')
 
 filetype plugin indent on
 
+" surround {{{
+if isdirectory(expand("~mrkn/src/vim-surround.git"))
+  set runtimepath^=~mrkn/src/vim-surround.git
+  if isdirectory(expand("~mrkn/src/vim-surround.git/doc"))
+    helptags ~mrkn/src/vim-surround.git/doc
+  endif
+endif
+" }}}
+
 " changelog
 let g:changelog_timeformat='%c'
 
@@ -160,7 +169,7 @@ if filereadable(expand('~mrkn/.blogger.vimrc'))
   source ~mrkn/.blogger.vimrc
 endif
 
-" vimshell
+" vimshell {{{
 if isdirectory(expand("~mrkn/src/vimshell.git")) && isdirectory(expand("~mrkn/src/vimproc.git"))
   set runtimepath^=~mrkn/src/vimshell.git,~/src/vimproc.git
   if isdirectory(expand("~mrkn/src/vimshell.git/doc"))
@@ -170,6 +179,7 @@ if isdirectory(expand("~mrkn/src/vimshell.git")) && isdirectory(expand("~mrkn/sr
     helptags ~mrkn/src/vimproc.git/doc
   endif
 endif
+" }}}
 
 " quickrun {{{
 if isdirectory(expand("~mrkn/src/vim-quickrun.git"))
@@ -373,3 +383,4 @@ colorscheme mrkn256
 
 set secure
 
+" vim: foldmethod=marker
