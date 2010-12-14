@@ -12,7 +12,7 @@ endif
 set expandtab
 set incsearch
 set backspace=indent,eol,start
-if exists('$VIM_CRONTAB')
+if exists('$VIM_EDITOR')
   set nobackup
   set nowritebackup
 else
@@ -264,6 +264,8 @@ endif
 " for Ruby {{{
 if isdirectory(expand("~mrkn/src/vim-ruby.git"))
   set runtimepath^=~mrkn/src/vim-ruby.git
+  " cf. http://tenderlovemaking.com/2009/05/18/autotest-and-vim-integration/
+  autocmd FileType ruby nmap <Leader>fd :compiler rspec<cr> :cf tmp/autotest.log<cr>
 endif
 " cf. http://github.com/ujihisa/config/blob/4cd4f32695917f95e9657feb07b73d0cafa6a60c/_vimrc#L310
 function! s:CRuby_setup()
