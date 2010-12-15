@@ -264,8 +264,19 @@ endif
 " for Ruby {{{
 if isdirectory(expand("~mrkn/src/vim-ruby.git"))
   set runtimepath^=~mrkn/src/vim-ruby.git
-  " cf. http://tenderlovemaking.com/2009/05/18/autotest-and-vim-integration/
-  autocmd FileType ruby nmap <Leader>fd :compiler rspec<cr> :cf tmp/autotest.log<cr>
+  augroup Ruby
+    autocmd!
+    " cf. http://tenderlovemaking.com/2009/05/18/autotest-and-vim-integration/
+    autocmd FileType ruby nmap <Leader>fd :compiler rspec<cr> :cf tmp/autotest.log<cr>
+    " rake
+    autocmd BufRead,BufNewFile *
+    \   if filereadable(expand(getcwd() . "/Rakefile"))
+    \ |   let &l:makeprg = "rake"
+    \ |   if filereadable(expand(getcwd() . "/Gemfile"))
+    \ |     let &l:makeprg = "bundle exec rake"
+    \ |   endif
+    \ | endif
+  augroup END
 endif
 " cf. http://github.com/ujihisa/config/blob/4cd4f32695917f95e9657feb07b73d0cafa6a60c/_vimrc#L310
 function! s:CRuby_setup()
