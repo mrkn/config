@@ -1,5 +1,6 @@
 set nocompatible
-"set runtimepath&
+set runtimepath&
+set runtimepath^=~/src/config.git/vim/dot.vim
 
 set encoding=utf-8
 set termencoding=utf-8
@@ -57,7 +58,7 @@ set listchars=eol:$,tab:>-,trail:-,extends:>,precedes:<
 set viminfo=<50,'10,h,r/a,n~/.viminfo
 
 
-helptags ~mrkn/src/config.git/vim/dot.vim/doc
+helptags ~/src/config.git/vim/dot.vim/doc
 
 "statusline
 set laststatus=2
@@ -153,10 +154,10 @@ call s:CMapABC_Add('^bdelete', 'BDELETE')
 filetype plugin indent on
 
 " surround {{{
-if isdirectory(expand("~mrkn/src/vim-surround.git"))
-  set runtimepath^=~mrkn/src/vim-surround.git
-  if isdirectory(expand("~mrkn/src/vim-surround.git/doc"))
-    helptags ~mrkn/src/vim-surround.git/doc
+if isdirectory(expand("~/src/vim-surround.git"))
+  set runtimepath^=~/src/vim-surround.git
+  if isdirectory(expand("~/src/vim-surround.git/doc"))
+    helptags ~/src/vim-surround.git/doc
   endif
 endif
 " }}}
@@ -165,38 +166,38 @@ endif
 let g:changelog_timeformat='%c'
 
 " blogger.vim
-if filereadable(expand('~mrkn/.blogger.vimrc'))
-  source ~mrkn/.blogger.vimrc
+if filereadable(expand('~/.blogger.vimrc'))
+  source ~/.blogger.vimrc
 endif
 
 " vimshell {{{
-if isdirectory(expand("~mrkn/src/vimshell.git")) && isdirectory(expand("~mrkn/src/vimproc.git"))
-  set runtimepath^=~mrkn/src/vimshell.git,~/src/vimproc.git
-  if isdirectory(expand("~mrkn/src/vimshell.git/doc"))
-    helptags ~mrkn/src/vimshell.git/doc
+if isdirectory(expand("~/src/vimshell.git")) && isdirectory(expand("~/src/vimproc.git"))
+  set runtimepath^=~/src/vimshell.git,~/src/vimproc.git
+  if isdirectory(expand("~/src/vimshell.git/doc"))
+    helptags ~/src/vimshell.git/doc
   endif
-  if isdirectory(expand("~mrkn/src/vimproc.git/doc"))
-    helptags ~mrkn/src/vimproc.git/doc
+  if isdirectory(expand("~/src/vimproc.git/doc"))
+    helptags ~/src/vimproc.git/doc
   endif
 endif
 " }}}
 
 " quickrun {{{
-if isdirectory(expand("~mrkn/src/vim-quickrun.git"))
+if isdirectory(expand("~/src/vim-quickrun.git"))
   if !exists("g:quickrun_config")
     let g:quickrun_config = {}
   endif
   let g:quickrun_config["*"] = {'split' : 'rightbelow vertical'}
 
-  set runtimepath^=~mrkn/src/vim-quickrun.git
-  if isdirectory(expand("~mrkn/src/vim-quickrun.git/doc"))
-    helptags ~mrkn/src/vim-quickrun.git/doc
+  set runtimepath^=~/src/vim-quickrun.git
+  if isdirectory(expand("~/src/vim-quickrun.git/doc"))
+    helptags ~/src/vim-quickrun.git/doc
   endif
 endif
 " }}}
 
 " git-vim {{{
-if isdirectory(expand("~mrkn/src/git-vim.git"))
+if isdirectory(expand("~/src/git-vim.git"))
   " http://vim-users.jp/2009/09/hack67/
   let g:git_no_map_default = 1
   let g:git_command_edit = 'rightbelow vnew'
@@ -211,30 +212,30 @@ if isdirectory(expand("~mrkn/src/git-vim.git"))
   nnoremap <Space>gC :<C-u>GitCommit --amend<Enter>
   nnoremap <Space>gp :<C-u>Git push
 
-  set runtimepath^=~mrkn/src/git-vim.git
-  if isdirectory(expand("~mrkn/src/git-vim.git/doc"))
-    helptags ~mrkn/src/git-vim.git/doc
+  set runtimepath^=~/src/git-vim.git
+  if isdirectory(expand("~/src/git-vim.git/doc"))
+    helptags ~/src/git-vim.git/doc
   endif
 endif
 " }}}
 
 " gist-vim {{{
-if isdirectory(expand("~mrkn/src/gist-vim.git"))
+if isdirectory(expand("~/src/gist-vim.git"))
   " http://mattn.kaoriya.net/software/vim/20081106153534.htm
   if has("unix") && match(system("uname"),'Darwin') != -1
     let g:gist_clip_command = 'pbcopy'
   endif
 
-  set runtimepath^=~mrkn/src/gist-vim.git
-  if isdirectory(expand("~mrkn/src/gits-vim.git/doc"))
-    helptags ~mrkn/src/gits-vim.git/doc
+  set runtimepath^=~/src/gist-vim.git
+  if isdirectory(expand("~/src/gits-vim.git/doc"))
+    helptags ~/src/gits-vim.git/doc
   endif
 endif
 " }}}
 
 " neocomplcache {{{
 " cf. http://vim-users.jp/2009/07/hack-49/
-if isdirectory(expand("~mrkn/src/neocomplcache.git"))
+if isdirectory(expand("~/src/neocomplcache.git"))
   let g:acp_enableAtStartup = 0
   let g:neocomplcache_enable_at_startup = 1
   let g:neocomplcache_smart_case = 1
@@ -257,23 +258,26 @@ if isdirectory(expand("~mrkn/src/neocomplcache.git"))
   let g:neocomplcache_snippets_dir = $HOME.'/snippets'
   let g:neocomplcache_caching_percent_in_statusline = 1
 
-  set runtimepath^=~mrkn/src/neocomplcache.git
+  set runtimepath^=~/src/neocomplcache.git
 endif
 " }}}
 
 " for Ruby {{{
-if isdirectory(expand("~mrkn/src/vim-ruby.git"))
-  set runtimepath^=~mrkn/src/vim-ruby.git
+if isdirectory(expand("~/src/vim-ruby.git"))
+  set runtimepath^=~/src/vim-ruby.git
   augroup Ruby
     autocmd!
     " cf. http://tenderlovemaking.com/2009/05/18/autotest-and-vim-integration/
-    autocmd FileType ruby nmap <Leader>fd :compiler rspec<cr> :cf tmp/autotest.log<cr>
+    autocmd FileType ruby
+    \   nnoremap <Leader>fd :<C-u>compiler rspec<cr> :cf tmp/autotest.log<cr>
     " rake
     autocmd BufRead,BufNewFile *
     \   if filereadable(expand(getcwd() . "/Rakefile"))
-    \ |   let &l:makeprg = "rake"
+    \ |   compiler rspec
     \ |   if filereadable(expand(getcwd() . "/Gemfile"))
     \ |     let &l:makeprg = "bundle exec rake"
+    \ |   else
+    \ |     let &l:makeprg = "rake"
     \ |   endif
     \ | endif
   augroup END
@@ -334,8 +338,8 @@ endfunction
 
 augroup CRuby
   autocmd!
-  autocmd BufWinEnter,BufNewFile ~mrkn/src/ruby.git/*.[chy] call s:CRuby_setup()
-  autocmd BufWinEnter,BufNewFile ~mrkn.ruby/src/ruby.git/*.[chy] call s:CRuby_setup()
+  autocmd BufWinEnter,BufNewFile ~/src/ruby.git/*.[chy] call s:CRuby_setup()
+  autocmd BufWinEnter,BufNewFile ~.ruby/src/ruby.git/*.[chy] call s:CRuby_setup()
   autocmd BufWinEnter,BufNewFile *.{c,cc,cpp,h,hh,hpp} call s:CRuby_ext_setup()
 augroup END
 " }}}
@@ -344,22 +348,22 @@ augroup END
 " cf. http://github.com/ujihisa/config/blob/4cd4f32695917f95e9657feb07b73d0cafa6a60c/_vimrc#L317
 augroup RubySpec
   autocmd!
-  autocmd BufWinEnter,BufNewFile ~mrkn/src/mspec.git/*.rb
+  autocmd BufWinEnter,BufNewFile ~/src/mspec.git/*.rb
         \ let b:quickrun_config.ruby = {
-        \   'command' : '/usr/bin/env ruby ~mrkn/src/mspec.git/bin/mspec -t /opt/ruby/trunk/bin/ruby'
+        \   'command' : '/usr/bin/env ruby ~/src/mspec.git/bin/mspec -t /opt/ruby/trunk/bin/ruby'
         \ }
 augroup END
 " }}}
 
 " for Rails {{{
-if isdirectory(expand("~mrkn/src/vim-rails.git"))
-  set runtimepath^=~mrkn/src/vim-rails.git
+if isdirectory(expand("~/src/vim-rails.git"))
+  set runtimepath^=~/src/vim-rails.git
 endif
 " }}}
 
 " for Cucumber {{{
-if isdirectory(expand("~mrkn/src/vim-cucumber.git"))
-  set runtimepath^=~mrkn/src/vim-cucumber.git
+if isdirectory(expand("~/src/vim-cucumber.git"))
+  set runtimepath^=~/src/vim-cucumber.git
 endif
 " }}}
 
@@ -392,7 +396,7 @@ endif
 set t_Co=256
 if !has('gui_running')
 endif
-colorscheme mrkn256
+colorscheme mrkn256g
 
 set secure
 
