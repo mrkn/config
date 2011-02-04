@@ -1,4 +1,8 @@
-source ~/.vimrc
+if has("gui_win32")
+  source ~/_vimrc
+else
+  source ~/.vimrc
+endif
 
 if has("gui_running")
   if has("gui_macvim")
@@ -12,8 +16,8 @@ if has("gui_running")
   elseif has("gui_gtk2")
 
   elseif has("gui_win32")
-    set guifont=M+1VM+IPAG_circle:h12
-    set printfont=M+2VM+IPAG_circle:h12
+    set guifont=M+1VM+IPAG_circle:h9
+    set printfont=M+2VM+IPAG_circle:h9
   endif
 endif
 

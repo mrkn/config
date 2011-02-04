@@ -57,7 +57,6 @@ set list
 set listchars=eol:$,tab:>-,trail:-,extends:>,precedes:<
 set viminfo=<50,'10,h,r/a,n~/.viminfo
 
-
 helptags ~/src/config.git/vim/dot.vim/doc
 
 "statusline
