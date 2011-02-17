@@ -386,6 +386,15 @@ augroup Rubydoc
 augroup END
 " }}}
 
+" for unite.vim {{{
+if isdirectory(expand("~/src/config.git/vim/submodules/unite.vim"))
+  set runtimepath^=~/src/config.git/vim/submodules/unite.vim
+  if isdirectory(expand("~/src/config.git/vim/submodules/unite.vim/doc"))
+    helptags ~/src/config.git/vim/submodules/unite.vim/doc
+  endif
+endif
+" }}}
+
 "
 " privacy settings
 if filereadable(expand('~/.privacy.vimrc'))
