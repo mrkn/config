@@ -1,0 +1,3 @@
+[submodule "vim/submodules/unite.vim"]
+	path = vim/submodules/unite.vim
+	url = git@github.com:mrkn/unite.vim.git
