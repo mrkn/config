@@ -262,6 +262,13 @@ endif
 " }}}
 
 " for Ruby {{{
+if has('gui_macvim') && has('kaoriya')
+  let s:ruby_libdir = system("ruby -rrbconfig -e 'print Config::CONFIG[\"libdir\"]'")
+  let s:ruby_libruby = s:ruby_libdir . '/libruby.dylib'
+  if filereadable(s:ruby_libruby)
+    let $RUBY_DLL = s:ruby_libruby
+  endif
+endif
 if isdirectory(expand("~/src/vim-ruby.git"))
   set runtimepath^=~/src/vim-ruby.git
   augroup Ruby
