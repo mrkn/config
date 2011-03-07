@@ -253,7 +253,7 @@ if has("gui_running") || &t_Co == 88 || &t_Co == 256
     "DiffText
     "ErrorMsg
     call <SID>X("VertSplit", "666666", "000000", "none")
-    call <SID>X("Folded", "ffd700", "4d4d4d", "")
+    call <SID>X("Folded", "ffd700", "000000", "bold")
     call <SID>X("FoldColumn", "d2b48c", "4d4d4d", "")
     call <SID>X("LineNr", "666666", "", "none")
     call <SID>X("ModeMsg", "daa520", "", "")
