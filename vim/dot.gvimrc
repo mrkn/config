@@ -4,10 +4,10 @@ else
   source ~/.vimrc
 endif
 
+set printfont=M+2VM+IPAG_circle:h10
 if has("gui_running")
   if has("gui_macvim")
-    set guifont=M+1VM+IPAG_circle:h14
-    set printfont=M+2VM+IPAG_circle:h14
+    set guifont=M+2VM+IPAG_circle:h14
     set fuoptions=maxvert,maxhorz
     set fullscreen
     set transparency=20
@@ -16,8 +16,7 @@ if has("gui_running")
   elseif has("gui_gtk2")
 
   elseif has("gui_win32")
-    set guifont=M+1VM+IPAG_circle:h9
-    set printfont=M+2VM+IPAG_circle:h9
+    set guifont=M+2VM+IPAG_circle:h7
   endif
 endif
 
