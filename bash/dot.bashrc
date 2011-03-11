@@ -99,9 +99,9 @@ fi
 #alias la='ls -A'
 #alias l='ls -CF'
 alias tree='tree -ACDNp'
-#if [ -e "/Applications/MacVim.app/Contents/MacOS/Vim" ]; then
-#  alias vim="/Applications/MacVim.app/Contents/MacOS/Vim"
-#fi
+if [ -e "/Applications/MacVim.app/Contents/MacOS/Vim" ]; then
+  alias vim="/Applications/MacVim.app/Contents/MacOS/Vim"
+fi
 
 case `uname -s` in
 Darwin*)
@@ -116,3 +116,5 @@ esac
 if [ -f /etc/bash_completion ]; then
   . /etc/bash_completion
 fi
+
+[[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm"  # This loads RVM into a shell session.
