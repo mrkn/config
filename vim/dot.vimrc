@@ -52,6 +52,7 @@ set autoread
 set shiftwidth=2
 set modeline
 set modelines=5
+set clipboard=unnamed
 
 set list
 set listchars=eol:$,tab:>-,trail:-,extends:>,precedes:<
