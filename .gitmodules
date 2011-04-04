@@ -7,3 +7,6 @@
 [submodule "vim/submodules/operator-camelize.vim"]
 	path = vim/submodules/operator-camelize.vim
 	url = git://github.com/tyru/operator-camelize.vim.git
+[submodule "vim/submodules/vim-operator-user"]
+	path = vim/submodules/vim-operator-user
+	url = git://github.com/kana/vim-operator-user.git
