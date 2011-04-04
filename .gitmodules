@@ -4,3 +4,6 @@
 [submodule "vim/submodules/zencoding-vim"]
 	path = vim/submodules/zencoding-vim
 	url = https://github.com/mattn/zencoding-vim.git
+[submodule "vim/submodules/operator-camelize.vim"]
+	path = vim/submodules/operator-camelize.vim
+	url = git://github.com/tyru/operator-camelize.vim.git
