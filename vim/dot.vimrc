@@ -1,7 +1,7 @@
 set nocompatible
 
 if exists('s:default_runtimepath')
-  set runtimepath=s:default_runtimepath
+  let &runtimepath=s:default_runtimepath
 else
   let s:default_runtimepath=&runtimepath
 endif
