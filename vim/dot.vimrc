@@ -409,6 +409,26 @@ if isdirectory(expand("~/src/config.git/vim/submodules/unite.vim"))
 endif
 " }}}
 
+" for vim-operator-user {{{
+if isdirectory(expand("~/src/config.git/vim/submodules/vim-operator-user"))
+  set runtimepath^=~/src/config.git/vim/submodules/vim-operator-user
+  if isdirectory(expand("~/src/config.git/vim/submodules/vim-operator-user/doc"))
+    helptags ~/src/config.git/vim/submodules/vim-operator-user/doc
+  endif
+endif
+" }}}
+
+" for operator-camelize.vim {{{
+if isdirectory(expand("~/src/config.git/vim/submodules/operator-camelize.vim"))
+  set runtimepath^=~/src/config.git/vim/submodules/operator-camelize.vim
+  if isdirectory(expand("~/src/config.git/vim/submodules/operator-camelize.vim/doc"))
+    helptags ~/src/config.git/vim/submodules/operator-camelize.vim/doc
+  endif
+  map <Leader>C <Plug>(operator-camelize)
+  map <Leader>c <Plug>(operator-decamelize)
+endif
+" }}}
+
 "
 " privacy settings
 if filereadable(expand('~/.privacy.vimrc'))
