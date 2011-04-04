@@ -16,10 +16,10 @@ if has('iconv')
   let s:enc_jis = 'iso-2022-jp'
 endif
 
-set expandtab
-set incsearch
-set backspace=indent,eol,start
-if exists('$VIM_EDITOR')
+" backup
+let s:ppid = get(matchlist(system('ps -a -o pid,ppid'), '\s*'.getpid().'\s\+\(\d\+\)'), 1)
+let s:parent_command = get(matchlist(system('ps -a -o pid,command'), '\s*'.s:ppid.'\s\+\(\S\+\)'), 1, '')
+if match(s:parent_command, '\<crontab\|git\|svn\>') >= 0
   set nobackup
   set nowritebackup
 else
@@ -27,6 +27,10 @@ else
   set backupdir=.
   set writebackup
 endif
+
+set expandtab
+set incsearch
+set backspace=indent,eol,start
 set directory-=.
 set noequalalways " http://vim-users.jp/2009/06/hack31/
 set hidden
