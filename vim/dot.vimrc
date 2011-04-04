@@ -1,5 +1,11 @@
 set nocompatible
-set runtimepath&
+
+if exists('s:default_runtimepath')
+  set runtimepath=s:default_runtimepath
+else
+  let s:default_runtimepath=&runtimepath
+endif
+
 set runtimepath^=~/src/config.git/vim/dot.vim
 
 set encoding=utf-8
