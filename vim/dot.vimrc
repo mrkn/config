@@ -16,10 +16,16 @@ if has('iconv')
   let s:enc_jis = 'iso-2022-jp'
 endif
 
+function! GetPPID()
+  return get(matchlist(system('ps -a -o pid,ppid'), '\s*'.getpid().'\s\+\(\d\+\)'), 1)
+endfunction
+
+function! GetParentCommand()
+  return get(matchlist(system('ps -a -o pid,command'), '\s*'.GetPPID().'\s\+\(\%(\S\|[^\n]\)\+\)'), 1, '')
+endfunction
+
 " backup
-let s:ppid = get(matchlist(system('ps -a -o pid,ppid'), '\s*'.getpid().'\s\+\(\d\+\)'), 1)
-let s:parent_command = get(matchlist(system('ps -a -o pid,command'), '\s*'.s:ppid.'\s\+\(\S\+\)'), 1, '')
-if match(s:parent_command, '\<crontab\|git\|svn\>') >= 0
+if match(GetParentCommand(), '\<crontab\|git\|svn\>') >= 0
   set nobackup
   set nowritebackup
 else
@@ -198,7 +204,9 @@ if isdirectory(expand("~/src/vim-quickrun.git"))
     let g:quickrun_config = {}
   endif
   let g:quickrun_config["*"] = {'split' : 'rightbelow vertical'}
-
+  " for RSpec {{{
+  let g:quickrun_config['ruby.rspec'] = {'command': 'rspec'}
+  " }}}
   set runtimepath^=~/src/vim-quickrun.git
   if isdirectory(expand("~/src/vim-quickrun.git/doc"))
     helptags ~/src/vim-quickrun.git/doc
@@ -284,6 +292,8 @@ if isdirectory(expand("~/src/vim-ruby.git"))
   set runtimepath^=~/src/vim-ruby.git
   augroup Ruby
     autocmd!
+    autocmd BufWinEnter,BufNewFile *_spec.rb
+    \   set filetype=ruby.rspec
     " cf. http://tenderlovemaking.com/2009/05/18/autotest-and-vim-integration/
     autocmd FileType ruby
     \   nnoremap <Leader>fd :<C-u>compiler rspec<cr> :cf tmp/autotest.log<cr>
