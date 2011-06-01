@@ -169,6 +169,18 @@ call s:CMapABC_Add('^bdelete', 'BDELETE')
 
 filetype plugin indent on
 
+" submodules {{{
+let s:submodules_dir = expand('<sfile>:h') . '/submodules'
+for dir in split(glob(s:submodules_dir . '/*'), "\n")
+  if isdirectory(dir)
+    let &runtimepath = dir . ',' . &runtimepath
+    let docdir = dir . '/doc'
+    if isdirectory(docdir)
+      helptags `=docdir`
+    endif
+  endif
+endfor
+
 " surround {{{
 if isdirectory(expand("~/src/vim-surround.git"))
   set runtimepath^=~/src/vim-surround.git
@@ -288,27 +300,26 @@ if has('gui_macvim') && has('kaoriya')
     let $RUBY_DLL = s:ruby_libruby
   endif
 endif
-if isdirectory(expand("~/src/vim-ruby.git"))
-  set runtimepath^=~/src/vim-ruby.git
-  augroup Ruby
-    autocmd!
-    autocmd BufWinEnter,BufNewFile *_spec.rb
-    \   set filetype=ruby.rspec
-    " cf. http://tenderlovemaking.com/2009/05/18/autotest-and-vim-integration/
-    autocmd FileType ruby
-    \   nnoremap <Leader>fd :<C-u>compiler rspec<cr> :cf tmp/autotest.log<cr>
-    " rake
-    autocmd BufRead,BufNewFile *
-    \   if filereadable(expand(getcwd() . "/Rakefile"))
-    \ |   compiler rspec
-    \ |   if filereadable(expand(getcwd() . "/Gemfile"))
-    \ |     let &l:makeprg = "bundle exec rake"
-    \ |   else
-    \ |     let &l:makeprg = "rake"
-    \ |   endif
-    \ | endif
-  augroup END
-endif
+
+augroup Ruby
+  autocmd!
+  autocmd BufWinEnter,BufNewFile *_spec.rb
+  \   set filetype=ruby.rspec
+  " cf. http://tenderlovemaking.com/2009/05/18/autotest-and-vim-integration/
+  autocmd FileType ruby
+  \   nnoremap <Leader>fd :<C-u>compiler rspec<cr> :cf tmp/autotest.log<cr>
+  " rake
+  autocmd BufRead,BufNewFile *
+  \   if filereadable(expand(getcwd() . "/Rakefile"))
+  \ |   compiler rspec
+  \ |   if filereadable(expand(getcwd() . "/Gemfile"))
+  \ |     let &l:makeprg = "bundle exec rake"
+  \ |   else
+  \ |     let &l:makeprg = "rake"
+  \ |   endif
+  \ | endif
+augroup END
+
 " cf. http://github.com/ujihisa/config/blob/4cd4f32695917f95e9657feb07b73d0cafa6a60c/_vimrc#L310
 function! s:CRuby_setup()
   setlocal tabstop=8 softtabstop=4 shiftwidth=4 noexpandtab
@@ -415,32 +426,14 @@ augroup END
 " }}}
 
 " for unite.vim {{{
-if isdirectory(expand("~/src/config.git/vim/submodules/unite.vim"))
-  set runtimepath^=~/src/config.git/vim/submodules/unite.vim
-  if isdirectory(expand("~/src/config.git/vim/submodules/unite.vim/doc"))
-    helptags ~/src/config.git/vim/submodules/unite.vim/doc
-  endif
-endif
 " }}}
 
 " for vim-operator-user {{{
-if isdirectory(expand("~/src/config.git/vim/submodules/vim-operator-user"))
-  set runtimepath^=~/src/config.git/vim/submodules/vim-operator-user
-  if isdirectory(expand("~/src/config.git/vim/submodules/vim-operator-user/doc"))
-    helptags ~/src/config.git/vim/submodules/vim-operator-user/doc
-  endif
-endif
 " }}}
 
 " for operator-camelize.vim {{{
-if isdirectory(expand("~/src/config.git/vim/submodules/operator-camelize.vim"))
-  set runtimepath^=~/src/config.git/vim/submodules/operator-camelize.vim
-  if isdirectory(expand("~/src/config.git/vim/submodules/operator-camelize.vim/doc"))
-    helptags ~/src/config.git/vim/submodules/operator-camelize.vim/doc
-  endif
-  map <Leader>C <Plug>(operator-camelize)
-  map <Leader>c <Plug>(operator-decamelize)
-endif
+map <Leader>C <Plug>(operator-camelize)
+map <Leader>c <Plug>(operator-decamelize)
 " }}}
 
 "

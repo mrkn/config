@@ -10,3 +10,6 @@
 [submodule "vim/submodules/vim-operator-user"]
 	path = vim/submodules/vim-operator-user
 	url = git://github.com/kana/vim-operator-user.git
+[submodule "vim/submodules/vim-ruby"]
+	path = vim/submodules/vim-ruby
+	url = git@github.com:mrkn/vim-ruby.git
