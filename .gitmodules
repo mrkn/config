@@ -16,3 +16,6 @@
 [submodule "vim/submodules/vim-coffee-script"]
 	path = vim/submodules/vim-coffee-script
 	url = https://github.com/kchmck/vim-coffee-script.git
+[submodule "vim/submodules/blogger.vim"]
+	path = vim/submodules/blogger.vim
+	url = https://github.com/ujihisa/blogger.vim
