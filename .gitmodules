@@ -13,3 +13,6 @@
 [submodule "vim/submodules/vim-ruby"]
 	path = vim/submodules/vim-ruby
 	url = git@github.com:mrkn/vim-ruby.git
+[submodule "vim/submodules/vim-coffee-script"]
+	path = vim/submodules/vim-coffee-script
+	url = https://github.com/kchmck/vim-coffee-script.git
