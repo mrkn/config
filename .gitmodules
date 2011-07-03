@@ -19,3 +19,6 @@
 [submodule "vim/submodules/blogger.vim"]
 	path = vim/submodules/blogger.vim
 	url = https://github.com/ujihisa/blogger.vim
+[submodule "vim/submodules/mrkn256.vim"]
+	path = vim/submodules/mrkn256.vim
+	url = git@github.com:mrkn/mrkn256.vim.git
