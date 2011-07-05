@@ -96,6 +96,10 @@ autocmd FileType *
 \ | endif
 " }}}
 
+" Normal mode keybinds
+nnoremap <Space>w :w<Enter>
+nnoremap <Space>q :q<Enter>
+
 " Command-line editing keybinds
 cnoremap <C-A> <Home>
 cnoremap <C-F> <Right>
@@ -436,6 +440,11 @@ map <Leader>C <Plug>(operator-camelize)
 map <Leader>c <Plug>(operator-decamelize)
 " }}}
 
+" for vim-coffee-script {{{
+autocmd BufNewFile,BufRead *.coffee set filetype=coffee
+autocmd BufNewFile,BufRead *Cakefile set filetype=coffee
+" }}}
+
 "
 " privacy settings
 if filereadable(expand('~/.privacy.vimrc'))
@@ -447,7 +456,7 @@ set t_AB=[48;5;%dm
 set t_AF=[38;5;%dm
 if !has('gui_running')
 endif
-colorscheme mrkn256g
+colorscheme mrkn256
 
 set secure
 
