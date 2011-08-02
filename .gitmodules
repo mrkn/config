@@ -22,3 +22,12 @@
 [submodule "vim/submodules/mrkn256.vim"]
 	path = vim/submodules/mrkn256.vim
 	url = git@github.com:mrkn/mrkn256.vim.git
+[submodule "vim/submodules/vim-quickrun"]
+	path = vim/submodules/vim-quickrun
+	url = git://github.com/thinca/vim-quickrun.git
+[submodule "vim/submodules/vimproc"]
+	path = vim/submodules/vimproc
+	url = git://github.com/Shougo/vimproc.git
+[submodule "vim/submodules/vimshell"]
+	path = vim/submodules/vimshell
+	url = git://github.com/Shougo/vimshell.git
