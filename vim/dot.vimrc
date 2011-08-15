@@ -97,8 +97,12 @@ autocmd FileType *
 " }}}
 
 " Normal mode keybinds
+nnoremap <Space>bd :BDELETE<Enter>
+nnoremap <Space>bn :bn<Enter>
+nnoremap <Space>bp :bp<Enter>
 nnoremap <Space>w :w<Enter>
 nnoremap <Space>q :q<Enter>
+nnoremap <Space>n :nohl<Enter>
 
 " Command-line editing keybinds
 cnoremap <C-A> <Home>
@@ -110,6 +114,7 @@ cnoremap <C-P> <Down>
 " New group for autocmd defined in this script
 augroup MyAutoCmd
   autocmd!
+  autocmd BufEnter * echo expand("%")
 augroup end
 
 
@@ -203,31 +208,18 @@ if filereadable(expand('~/.blogger.vimrc'))
 endif
 
 " vimshell {{{
-if isdirectory(expand("~/src/vimshell.git")) && isdirectory(expand("~/src/vimproc.git"))
-  set runtimepath^=~/src/vimshell.git,~/src/vimproc.git
-  if isdirectory(expand("~/src/vimshell.git/doc"))
-    helptags ~/src/vimshell.git/doc
-  endif
-  if isdirectory(expand("~/src/vimproc.git/doc"))
-    helptags ~/src/vimproc.git/doc
-  endif
-endif
 " }}}
 
 " quickrun {{{
-if isdirectory(expand("~/src/vim-quickrun.git"))
-  if !exists("g:quickrun_config")
-    let g:quickrun_config = {}
-  endif
-  let g:quickrun_config["*"] = {'split' : 'rightbelow vertical'}
-  " for RSpec {{{
-  let g:quickrun_config['ruby.rspec'] = {'command': 'rspec'}
-  " }}}
-  set runtimepath^=~/src/vim-quickrun.git
-  if isdirectory(expand("~/src/vim-quickrun.git/doc"))
-    helptags ~/src/vim-quickrun.git/doc
-  endif
+if !exists("g:quickrun_config")
+  let g:quickrun_config = {}
 endif
+let g:quickrun_no_default_key_mapping = 1
+nnoremap <silent> <Leader>r :<C-u>QuickRun -mode n<CR>:redraw!<CR>
+let g:quickrun_config["*"] = {'split' : 'rightbelow vertical'}
+" for RSpec {{{
+let g:quickrun_config['ruby.rspec'] = {'command': 'rspec'}
+" }}}
 " }}}
 
 " git-vim {{{
