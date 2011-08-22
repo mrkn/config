@@ -31,3 +31,6 @@
 [submodule "vim/submodules/vimshell"]
 	path = vim/submodules/vimshell
 	url = git://github.com/Shougo/vimshell.git
+[submodule "vim/submodules/unite-outline"]
+	path = vim/submodules/unite-outline
+	url = git://github.com/h1mesuke/unite-outline.git
