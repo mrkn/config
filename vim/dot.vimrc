@@ -437,6 +437,10 @@ autocmd BufNewFile,BufRead *.coffee set filetype=coffee
 autocmd BufNewFile,BufRead *Cakefile set filetype=coffee
 " }}}
 
+" for rdoc.vim {{{
+autocmd BufNewFile,BufRead *.rdoc set filetype=rdoc
+" }}}
+
 "
 " privacy settings
 if filereadable(expand('~/.privacy.vimrc'))
