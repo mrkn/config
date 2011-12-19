@@ -103,6 +103,8 @@ nnoremap <Space>bp :bp<Enter>
 nnoremap <Space>w :w<Enter>
 nnoremap <Space>q :q<Enter>
 nnoremap <Space>n :nohl<Enter>
+nnoremap <Space>uf :Unite<Space>file<Enter>
+nnoremap <Space>ub :Unite<Space>buffer<Enter>
 
 " Command-line editing keybinds
 cnoremap <C-A> <Home>
