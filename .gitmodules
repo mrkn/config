@@ -43,3 +43,6 @@
 [submodule "vim/submodules/git-vim"]
 	path = vim/submodules/git-vim
 	url = git://github.com/motemen/git-vim.git
+[submodule "vim/submodules/vim-surround"]
+	path = vim/submodules/vim-surround
+	url = git://github.com/tpope/vim-surround.git
