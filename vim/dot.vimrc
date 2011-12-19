@@ -192,15 +192,6 @@ for dir in split(glob(s:submodules_dir . '/*'), "\n")
   endif
 endfor
 
-" surround {{{
-if isdirectory(expand("~/src/vim-surround.git"))
-  set runtimepath^=~/src/vim-surround.git
-  if isdirectory(expand("~/src/vim-surround.git/doc"))
-    helptags ~/src/vim-surround.git/doc
-  endif
-endif
-" }}}
-
 " changelog
 let g:changelog_timeformat='%c'
 
